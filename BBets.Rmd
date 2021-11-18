@@ -102,6 +102,26 @@ The plot seems to show that the zero is centered when we use the odds of 4.39.
 
 
 
+```{r}
+Data3<- array(dim = 200)
+Data3<- as.numeric(Data3)
+for(i in 1:200){
+  Data3[i] = Sierra(numClass = 29)
+}
+sdata3<- sort(Data3)
+hist(sdata3)
+abline(v=sdata3[5],col="red")
+abline(v=sdata3[195],col="blue")
+low<- (sdata3[10])
+high<- (sdata3[190])
+```
+
+
+As per the plot above, it shows that for us to be able to make the 2:1 bets fair the number of students in a given class should be about 29. We care upon the number of the class by narrowing down the number of people. The less people in the class, the less money he makes.
+
+The red and the blue line in the plot above represents the 95% interval of his earnings.
+
+
 
 # Discussion and Conclusion
 
