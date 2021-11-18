@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 require(tidyverse)
 require(tigerstats)
 require(knitr)
-source(file="BrLw.R")
+source(file="Sierra.R")
 ```
 
 
@@ -43,21 +43,62 @@ The function will be given a class_size by number of students, odds, and Number_
 <!--Explain and display your method of coming up with a 95% confidence interval of  professor Brownlows winnings (or losings)-->
 
 
+
+The code block below explains that the array has a 1000 elements inside of it. It represents the mount of money that each person mode for a 2:1 bet in class of 35 students and the 637 times he made the bet. In order to get the 95% confidence interval, we had to sort the data from low to high to determine who made the most money and vice versa. The middle of it runs from the 25 and 975.
+
+
+
+```{r}
+Data1<- array(dim = 1000)
+Data1<- as.numeric(Data1)
+for(i in 1:1000){
+  Data1[i] =Sierra()
+}
+sdata1<- sort(Data1)
+hist(sdata1)
+abline(v=sdata1[25],col="red")
+abline(v=sdata1[975],col="blue")
+low<- (sdata1[25])
+high<- (sdata1[975])
+```
+
+
+For the table above, we determined that 40 isn't enough so we configured the table to have a 1000 elements seeing that it would provide sufficient data for us.
+
+The 95% confidence interval is `r low` to `r high`.
+
+
+
 # What are the fair odds? Use manipulation of odds in the function to tune Brownlows earnings to zero. 
 
 
 <!--Decide on your methods:  In this section explain the approach you will take to attack the issue --- how will you decide on a likely estimate of professor Brownlow's earnings or losses after 637 bets. Also explain how you construct a 95% confidence interval about your estimate of his winnings !-->
 
 
+After manipulating with the function on hand, we determined that 4.39 was the fair odds.
 
+
+```{r}
+Data2<- array(dim = 200)
+Data2<- as.numeric(Data2)
+for(i in 1:200){
+  Data2[i] = Sierra(odds= 4.39)
+}
+sdata2<- sort(Data2)
+hist(sdata2)
+abline(v=sdata2[10],col="red")
+abline(v=sdata2[190],col="blue")
+low<- (sdata2[10])
+high<- (sdata2[190])
+```
+
+
+
+The plot seems to show that the zero is centered when we use the odds of 4.39.
 
 # What size of class makes the 2:1 bet fair?  Use manipulation of number of Students to tune Brownlows earnings to zero.
 
 <!--Explain and display the results of your method of coming up with the estimate of professor Brownlows betting profits!-->
-
-
-
-
 
 
 
